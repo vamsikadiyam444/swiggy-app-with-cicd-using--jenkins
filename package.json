@@ -1,0 +1,32 @@
+{
+  "name": "swiggy-app",
+  "version": "1.0.0",
+  "description": "Swiggy App created by Chakri Seelam",
+  "keywords": [
+    "Founder",
+    "Chakri"
+  ],
+  "homepage": "https://github.com/Chakri45446/Swiggy-App#readme",
+  "bugs": {
+    "url": "https://github.com/Chakri45446/Swiggy-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chakri45446/Swiggy-App.git"
+  },
+  "license": "ISC",
+  "author": "Chakradara Rao Seelam",
+  "type": "commonjs",
+  "scripts": {
+    "start":"parcel index.html",
+    "build":"parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
