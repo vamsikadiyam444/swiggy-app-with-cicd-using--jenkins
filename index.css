@@ -23,18 +23,34 @@
 }
 
 .res-container {
-    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+   
+    gap: 30px;
+
     
-    border: 1px solid black;
+    
 }
 
 .res-logo {
-   width: 190px;
-   padding-left: 5px;
-   padding-top: 5px;
+   width: 100%;
+   
+   
+  
     
 }
 
 .res-card {
-    margin-top : -10px;
+    padding: 5px;
+    width: 200px;
+    margin-top : 0px;
+   
+    
+    
+}
+
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+
 }
