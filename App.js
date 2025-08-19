@@ -8,6 +8,9 @@ import ContactUs from "./src/compnents/ContactUs";
 import Error from "./src/compnents/Error";
 import RestaurantMenu from "./src/compnents/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./src/compnents/Cart";
 
 
 const App = () => {
@@ -21,6 +24,7 @@ const App = () => {
         setUserName(data.name)
     },[])
     return(
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser:userName , setUserName}}>
         <>
         <Header />
@@ -28,6 +32,7 @@ const App = () => {
 
         </>
         </UserContext.Provider>
+        </Provider>
     )
 }
 
@@ -52,6 +57,11 @@ const appRouter = createBrowserRouter([
     {
         path: "/resmenu/:resId",
         element:<RestaurantMenu />,
+    },{
+
+        path:"/cart",
+        element:<Cart />
+
     },
 
         ],

@@ -30,6 +30,8 @@ const fetchData = async () => {
 }
 
    const onlineStatus = useOnlineStatus();
+   
+    const {setUserName , loggedInUser} = useContext(UserContext);
 
    if(onlineStatus === false){
     return <h1>Looks like you're offline! Check Internet Connectivity</h1>
@@ -40,7 +42,6 @@ const fetchData = async () => {
         return <Shimmer />
     }
 
-    const {setUserName , loggedInUser} = useContext(UserContext);
 
     return (
         <div className="">
