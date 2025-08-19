@@ -11,16 +11,13 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId);
 
-    
         const[showIndex , setShowIndex] = useState(null);
     
-
-
     if (resInfo === null ){
         return <Shimmer />
     }
 
-    const {name,cuisines} = resInfo?.data?.cards[2]?.card?.card?.info;
+    const {name  , cuisines} = resInfo?.data?.cards[2]?.card?.card?.info;
 
    const {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card;
 //    console.log(resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
@@ -33,9 +30,6 @@ const RestaurantMenu = () => {
 
 );
 
-   
-
-    
     return(
         <div className="text-center p-4 m-2">
             <h1 className="p-2 font-bold text-2xl">{name}</h1>

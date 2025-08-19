@@ -45,9 +45,10 @@ const fetchData = async () => {
 
     return (
         <div className="">
-           <div className="p-2 m-2 "> 
-            <input type="text" className="border border-solid to-black  "  value = {searchText} onChange={(e) => {setSearchText(e.target.value)}} />
-             <button className="  px-4 py-2 m-4 bg-green-100 hover:border border-solid to-black rounded-lg cursor-pointer" onClick={()=> {
+           <div className="p-2 m-2 flex gap-8 "> 
+            <div>
+            <input type="text" className="border border-solid to-black p-1  m-2 "  value = {searchText} onChange={(e) => {setSearchText(e.target.value)}} />
+             <button className="  px-2 py-2 m-2 bg-green-100 hover:border border-solid to-black rounded-lg cursor-pointer" onClick={()=> {
                 let filteredResturant = listOfResturants.filter((fit)=>
                 fit.info.name.toLowerCase().includes(searchText.toLowerCase())
                 );
@@ -55,17 +56,20 @@ const fetchData = async () => {
                 setFilteredResturant(filteredResturant);
                  
             }}>Search</button>
-            <button className=" bg-gray-100 p-2 px-6 rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300" 
+            </div>
+           <div>
+            <button className=" bg-gray-100  px-3 py-4  rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300" 
             onClick={() => {
                 const filteredList = listOfResturants.filter( 
                      (res) =>  res.info.avgRating > 4.2
                     );
-                     setListOfResturants(filteredList);
+                     setFilteredResturant(filteredList);
                      console.log("button clicked")
             }}
             >Top Rated Restaurants
             </button>
-            <div className="flex m-4 items-center">
+            </div>
+            <div className="flex m-2 items-center gap-2  ">
              <label>UseName : </label>
                 <input className="p-2 border border-black" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}/>
                 </div>

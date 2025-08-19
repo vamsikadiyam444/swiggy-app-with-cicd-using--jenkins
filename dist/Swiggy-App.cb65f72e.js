@@ -26522,53 +26522,67 @@ const Body = ()=>{
         className: "",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 m-2 ",
+                className: "p-2 m-2 flex gap-8 ",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        className: "border border-solid to-black  ",
-                        value: searchText,
-                        onChange: (e)=>{
-                            setSearchText(e.target.value);
-                        }
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                className: "border border-solid to-black p-1  m-2 ",
+                                value: searchText,
+                                onChange: (e)=>{
+                                    setSearchText(e.target.value);
+                                }
+                            }, void 0, false, {
+                                fileName: "src/compnents/Body.js",
+                                lineNumber: 50,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "  px-2 py-2 m-2 bg-green-100 hover:border border-solid to-black rounded-lg cursor-pointer",
+                                onClick: ()=>{
+                                    let filteredResturant = listOfResturants.filter((fit)=>fit.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                                    setFilteredResturant(filteredResturant);
+                                },
+                                children: "Search"
+                            }, void 0, false, {
+                                fileName: "src/compnents/Body.js",
+                                lineNumber: 51,
+                                columnNumber: 14
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/compnents/Body.js",
                         lineNumber: 49,
                         columnNumber: 13
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "  px-4 py-2 m-4 bg-green-100 hover:border border-solid to-black rounded-lg cursor-pointer",
-                        onClick: ()=>{
-                            let filteredResturant = listOfResturants.filter((fit)=>fit.info.name.toLowerCase().includes(searchText.toLowerCase()));
-                            setFilteredResturant(filteredResturant);
-                        },
-                        children: "Search"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: " bg-gray-100  px-3 py-4  rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300",
+                            onClick: ()=>{
+                                const filteredList = listOfResturants.filter((res)=>res.info.avgRating > 4.2);
+                                setFilteredResturant(filteredList);
+                                console.log("button clicked");
+                            },
+                            children: "Top Rated Restaurants"
+                        }, void 0, false, {
+                            fileName: "src/compnents/Body.js",
+                            lineNumber: 61,
+                            columnNumber: 13
+                        }, undefined)
                     }, void 0, false, {
                         fileName: "src/compnents/Body.js",
-                        lineNumber: 50,
-                        columnNumber: 14
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: " bg-gray-100 p-2 px-6 rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300",
-                        onClick: ()=>{
-                            const filteredList = listOfResturants.filter((res)=>res.info.avgRating > 4.2);
-                            setListOfResturants(filteredList);
-                            console.log("button clicked");
-                        },
-                        children: "Top Rated Restaurants"
-                    }, void 0, false, {
-                        fileName: "src/compnents/Body.js",
-                        lineNumber: 58,
-                        columnNumber: 13
+                        lineNumber: 60,
+                        columnNumber: 12
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "flex m-4 items-center",
+                        className: "flex m-2 items-center gap-2  ",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                 children: "UseName : "
                             }, void 0, false, {
                                 fileName: "src/compnents/Body.js",
-                                lineNumber: 69,
+                                lineNumber: 73,
                                 columnNumber: 14
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26577,13 +26591,13 @@ const Body = ()=>{
                                 onChange: (e)=>setUserName(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/compnents/Body.js",
-                                lineNumber: 70,
+                                lineNumber: 74,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/compnents/Body.js",
-                        lineNumber: 68,
+                        lineNumber: 72,
                         columnNumber: 13
                     }, undefined)
                 ]
@@ -26600,17 +26614,17 @@ const Body = ()=>{
                             resData: restaurant
                         }, void 0, false, {
                             fileName: "src/compnents/Body.js",
-                            lineNumber: 77,
+                            lineNumber: 81,
                             columnNumber: 91
                         }, undefined)
                     }, restaurant.info.id, false, {
                         fileName: "src/compnents/Body.js",
-                        lineNumber: 77,
+                        lineNumber: 81,
                         columnNumber: 21
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/compnents/Body.js",
-                lineNumber: 74,
+                lineNumber: 78,
                 columnNumber: 13
             }, undefined)
         ]
@@ -27226,7 +27240,7 @@ const RestaurantMenu = ()=>{
     const [showIndex, setShowIndex] = (0, _react.useState)(null);
     if (resInfo === null) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/compnents/RestaurantMenu.js",
-        lineNumber: 20,
+        lineNumber: 17,
         columnNumber: 16
     }, undefined);
     const { name, cuisines } = resInfo?.data?.cards[2]?.card?.card?.info;
@@ -27241,7 +27255,7 @@ const RestaurantMenu = ()=>{
                 children: name
             }, void 0, false, {
                 fileName: "src/compnents/RestaurantMenu.js",
-                lineNumber: 41,
+                lineNumber: 35,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27249,7 +27263,7 @@ const RestaurantMenu = ()=>{
                 children: cuisines.join(", ")
             }, void 0, false, {
                 fileName: "src/compnents/RestaurantMenu.js",
-                lineNumber: 42,
+                lineNumber: 36,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27259,18 +27273,18 @@ const RestaurantMenu = ()=>{
                         setShowIndex: ()=>setShowIndex(index)
                     }, category?.card?.card?.categoryId, false, {
                         fileName: "src/compnents/RestaurantMenu.js",
-                        lineNumber: 46,
+                        lineNumber: 40,
                         columnNumber: 21
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/compnents/RestaurantMenu.js",
-                lineNumber: 43,
+                lineNumber: 37,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/compnents/RestaurantMenu.js",
-        lineNumber: 40,
+        lineNumber: 34,
         columnNumber: 9
     }, undefined);
 };
@@ -31636,6 +31650,6 @@ $RefreshReg$(_c, "Cart");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-redux":"hbNxT","./ItemList":"kjb7u","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../utils/cartSlice":"fLKRo"}]},["icAAj","blcJa"], "blcJa", "parcelRequire3454", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","react-redux":"hbNxT","./ItemList":"kjb7u","../../utils/cartSlice":"fLKRo","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["icAAj","blcJa"], "blcJa", "parcelRequire3454", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=Swiggy-App.cb65f72e.js.map

@@ -6,7 +6,7 @@
 74D:\Swiggy-App\node_modules\@parcel\transformer-json\lib\JSONTransformer.js133971325466812438 0
 52D:\Swiggy-App\node_modules\tailwindcss\utilities.css133991869816231593 0
 74D:\Swiggy-App\node_modules\@reduxjs\toolkit\src\tests\combinedTest.test.ts133999835661395849 0
-18D:\Swiggy-App\dist134000580427697352 1
+18D:\Swiggy-App\dist134000689745916167 1
 58D:\Swiggy-App\node_modules\caniuse-lite\data\regions\IT.js133971325536740510 0
 76D:\Swiggy-App\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\Doxyfile133971325482301073 0
 55D:\Swiggy-App\node_modules\.bin\download-lmdb-prebuilds133971325595957575 0
@@ -94,7 +94,7 @@
 67D:\Swiggy-App\node_modules\tar\dist\esm\strip-trailing-slashes.d.ts133991869837381394 0
 75D:\Swiggy-App\node_modules\@parcel\core\test\requests\DevDepRequest.test.js133971325506316604 0
 58D:\Swiggy-App\node_modules\caniuse-lite\data\regions\JM.js133971325537098249 0
-35D:\Swiggy-App\src\compnents\Body.js133999916881852768 0
+35D:\Swiggy-App\src\compnents\Body.js134000689744875398 0
 63D:\Swiggy-App\node_modules\caniuse-lite\data\features\run-in.js133971325542828038 0
 65D:\Swiggy-App\node_modules\@parcel\packager-js\lib\dev-prelude.js133971325472406534 0
 73D:\Swiggy-App\node_modules\caniuse-lite\data\features\css-first-letter.js133971325520108973 0
@@ -220,7 +220,7 @@
 60D:\Swiggy-App\node_modules\@reduxjs\toolkit\src\tsHelpers.ts133999835667780979 0
 69D:\Swiggy-App\node_modules\@reduxjs\toolkit\src\tests\Tuple.test-d.ts133999835667800980 0
 42D:\Swiggy-App\node_modules\react\README.md133971326631377110 0
-45D:\Swiggy-App\src\compnents\RestaurantMenu.js133998794266908245 0
+45D:\Swiggy-App\src\compnents\RestaurantMenu.js134000684519501645 0
 67D:\Swiggy-App\node_modules\tar\dist\commonjs\path-reservations.d.ts133991869837138909 0
 76D:\Swiggy-App\node_modules\@reduxjs\toolkit\src\query\tests\queryFn.test.tsx133999835669430931 0
 49D:\Swiggy-App\node_modules\semver\ranges\valid.js133971325501219414 0
@@ -749,7 +749,7 @@
 83D:\Swiggy-App\node_modules\@swc\helpers\cjs\_class_apply_descriptor_destructure.cjs133971325487036847 0
 56D:\Swiggy-App\node_modules\utility-types\dist\index.d.ts133971325489292699 0
 70D:\Swiggy-App\node_modules\caniuse-lite\data\features\passwordrules.js133971325541425352 0
-41D:\Swiggy-App\dist\Swiggy-App.cb65f72e.js134000580427551429 0
+41D:\Swiggy-App\dist\Swiggy-App.cb65f72e.js134000689745692214 0
 60D:\Swiggy-App\node_modules\tailwindcss\dist\default-theme.js133991869817949759 0
 59D:\Swiggy-App\node_modules\react-router-dom\dist\index.d.ts133978024009649127 0
 58D:\Swiggy-App\node_modules\utility-types\dist\index.js.map133971325483416560 0
@@ -4685,7 +4685,7 @@
 61D:\Swiggy-App\node_modules\@parcel\graph\lib\shared-buffer.js133971325491559997 0
 53D:\Swiggy-App\node_modules\@parcel\graph\lib\types.js133971325493325672 0
 48D:\Swiggy-App\node_modules\@parcel\fs\index.d.ts133971325491872817 0
-45D:\Swiggy-App\dist\Swiggy-App.cb65f72e.js.map134000580427677236 0
+45D:\Swiggy-App\dist\Swiggy-App.cb65f72e.js.map134000689745906198 0
 41D:\Swiggy-App\node_modules\@parcel\fs\lib133971325492729727 1
 42D:\Swiggy-App\node_modules\@parcel\fs\test133971325485642007 1
 49D:\Swiggy-App\node_modules\@parcel\fs\src\find.js133971325472266095 0
@@ -5064,6 +5064,6 @@
 42D:\Swiggy-App\node_modules\.bin\semver.ps1133971325595957575 0
 54D:\Swiggy-App\node_modules\.bin\update-browserslist-db133971325596020848 0
 58D:\Swiggy-App\node_modules\.bin\update-browserslist-db.cmd133971325596040940 0
-29D:\Swiggy-App\dist\index.html134000580003600348 0
-42D:\Swiggy-App\dist\Swiggy-App.9e4c6fd2.css134000580003610476 0
-46D:\Swiggy-App\dist\Swiggy-App.9e4c6fd2.css.map134000580003850288 0
+29D:\Swiggy-App\dist\index.html134000689745682233 0
+42D:\Swiggy-App\dist\Swiggy-App.9e4c6fd2.css134000689745692214 0
+46D:\Swiggy-App\dist\Swiggy-App.9e4c6fd2.css.map134000689745883189 0
