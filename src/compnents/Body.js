@@ -45,9 +45,9 @@ const fetchData = async () => {
 
     return (
         <div className="">
-           <div className="p-2 m-2 flex gap-8 "> 
+           <div className=" m-2 p-2 flex gap-10  "> 
             <div>
-            <input type="text" className="border border-solid to-black p-1  m-2 "  value = {searchText} onChange={(e) => {setSearchText(e.target.value)}} />
+            <input data-testid="searchInput" type="text" placeholder="search restaurant" className="border border-solid to-black p-1  m-2 "  value = {searchText} onChange={(e) => {setSearchText(e.target.value)}} />
              <button className="  px-2 py-2 m-2 bg-green-100 hover:border border-solid to-black rounded-lg cursor-pointer" onClick={()=> {
                 let filteredResturant = listOfResturants.filter((fit)=>
                 fit.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -58,7 +58,7 @@ const fetchData = async () => {
             }}>Search</button>
             </div>
            <div>
-            <button className=" bg-gray-100  px-3 py-4  rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300" 
+            <button className=" bg-gray-100  px-4 py-4  rounded-lg cursor-pointer hover:border border-solid to-black hover:bg-gray-300" 
             onClick={() => {
                 const filteredList = listOfResturants.filter( 
                      (res) =>  res.info.avgRating > 4.2
@@ -78,11 +78,25 @@ const fetchData = async () => {
             <div className="flex flex-wrap">
             {
                 filteredResturant?.map((restaurant) => (
-                    <Link key = {restaurant.info.id} to={"/resmenu/"+ restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>
+                    <Link key = {restaurant.info.id} 
+                    to={"/resmenu/"+ restaurant.info.id}>
+                        <RestaurantCard  resData={restaurant} /></Link>
                 ))
             }
+
+           
             </div>
+
+            <div>
+                 <footer>
+                    <p className="p-2 m-1">_________________________________________________________________________________________________________________________________________________________________________________________________________________________________</p>
+                <h1 className="text-sm p-1 m-1 px-150">© copyright : 2025 By Chakradara Rao Seelam </h1>
+            </footer>
+            </div>
+
+
         </div>
+
     )
 }
 export default Body;

@@ -4,7 +4,10 @@
 
 
 # Ignore Parcel-cache
-.parcel-cache/
+.parcel-cache
 
 # Ignore dist
 /dist
+
+#Ignore Coverage
+/coverage
