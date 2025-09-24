@@ -75,5 +75,6 @@ jobs:
             git push https://vamsikadiyam444:${{ secrets.PAT_TOKEN }}@github.com/vamsikadiyam444/swiggy-app-with-cicd-using--jenkins.git main
           else
             echo "No changes to commit"
+          fi
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
