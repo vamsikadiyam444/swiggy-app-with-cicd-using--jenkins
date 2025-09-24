@@ -11,7 +11,7 @@ on:
 env:
   IMAGE_NAME: swiggy-app
   REGISTRY: docker.io
-  REPOSITORY: your-dockerhub-username/swiggy-app
+  REPOSITORY: vamsikrishna212/swiggy-app
 
 jobs:
   build-test-docker:
