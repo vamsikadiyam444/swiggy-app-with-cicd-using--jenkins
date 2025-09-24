@@ -14,9 +14,8 @@ env:
   REPOSITORY: vamsikrishna212/swiggy-app
 
 jobs:
-  build-test-docker:
+  build-docker:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -51,18 +50,23 @@ jobs:
           docker push $REGISTRY/$REPOSITORY:${{ github.sha }}
           docker push $REGISTRY/$REPOSITORY:latest
 
+  update-manifest:
+    runs-on: ubuntu-latest
+    needs: build-docker
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Update Kubernetes manifest image tag
         run: |
-          sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" k8s/deployment.yaml
+          sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" ./deployment.yaml
 
       - name: Commit and push updated manifest
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add k8s/deployment.yaml
+          git add ./deployment.yaml
           git commit -m "Update image tag to ${{ github.sha }}"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
