@@ -33,6 +33,6 @@ spec:
     spec:
       containers:
         - name: swiggy-app
-          image: docker.io/your-dockerhub-username/swiggy-app:latest
+          image: image: vamsikrishna212/swiggy-app:latest
           ports:
             - containerPort: 80
