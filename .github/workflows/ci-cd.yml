@@ -43,13 +43,10 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $REGISTRY/$REPOSITORY:${{ github.sha }} .
-          # Optionally tag as latest
-          # docker tag $REGISTRY/$REPOSITORY:${{ github.sha }} $REGISTRY/$REPOSITORY:latest
 
       - name: Push Docker image
         run: |
           docker push $REGISTRY/$REPOSITORY:${{ github.sha }}
-          # docker push $REGISTRY/$REPOSITORY:latest
 
   update-manifest:
     runs-on: ubuntu-latest
@@ -60,10 +57,11 @@ jobs:
 
       - name: Update Kubernetes manifest image tag
         run: |
-          # Make sure path matches your repo
+          # Set the path to your deployment manifest
           MANIFEST_PATH=./deployment.yaml
           if [ -f "$MANIFEST_PATH" ]; then
-            sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" "$MANIFEST_PATH"
+            # Use flexible regex to handle YAML indentation
+            sed -i "s|^\s*image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" "$MANIFEST_PATH"
           else
             echo "Deployment manifest not found at $MANIFEST_PATH"
             exit 1
@@ -79,6 +77,5 @@ jobs:
             git push
           else
             echo "No changes to commit"
-          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
