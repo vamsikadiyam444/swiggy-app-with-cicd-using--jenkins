@@ -43,12 +43,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $REGISTRY/$REPOSITORY:${{ github.sha }} .
-          docker tag $REGISTRY/$REPOSITORY:${{ github.sha }} $REGISTRY/$REPOSITORY:latest
+          # Optionally tag as latest
+          # docker tag $REGISTRY/$REPOSITORY:${{ github.sha }} $REGISTRY/$REPOSITORY:latest
 
       - name: Push Docker image
         run: |
           docker push $REGISTRY/$REPOSITORY:${{ github.sha }}
-          docker push $REGISTRY/$REPOSITORY:latest
+          # docker push $REGISTRY/$REPOSITORY:latest
 
   update-manifest:
     runs-on: ubuntu-latest
@@ -59,13 +60,19 @@ jobs:
 
       - name: Update Kubernetes manifest image tag
         run: |
-          sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" ./deployment.yaml
+          # Make sure path matches your repo
+          MANIFEST_PATH=./deployment.yaml
+          if [ -f "$MANIFEST_PATH" ]; then
+            sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" "$MANIFEST_PATH"
+          else
+            echo "Deployment manifest not found at $MANIFEST_PATH"
+            exit 1
+          fi
 
       - name: Commit and push updated manifest if changed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          # Only commit if there are changes
           if ! git diff --quiet ./deployment.yaml; then
             git add ./deployment.yaml
             git commit -m "Update image tag to ${{ github.sha }}"
