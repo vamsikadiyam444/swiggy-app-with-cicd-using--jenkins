@@ -65,16 +65,15 @@ jobs:
             exit 1
           fi
 
-      - name: Commit and push updated manifest if changed
+      - name: Commit and push updated manifest if changed using PAT
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           if ! git diff --quiet ./k8s/deployment.yaml; then
             git add ./k8s/deployment.yaml
             git commit -m "Update image tag to ${{ github.sha }}"
-            git push
+            git push https://vamsikadiyam444:${{ secrets.PAT_TOKEN }}@github.com/vamsikadiyam444/swiggy-app-with-cicd-using--jenkins.git main
           else
             echo "No changes to commit"
-          fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
