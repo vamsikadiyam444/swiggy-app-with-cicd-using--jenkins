@@ -57,10 +57,10 @@ jobs:
 
       - name: Update Kubernetes manifest image tag
         run: |
-          # Set the path to your deployment manifest
-          MANIFEST_PATH=./deployment.yaml
+          # Correct path to deployment manifest
+          MANIFEST_PATH=./k8s/deployment.yaml
           if [ -f "$MANIFEST_PATH" ]; then
-            # Use flexible regex to handle YAML indentation
+            # Replace image tag with commit SHA
             sed -i "s|^\s*image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" "$MANIFEST_PATH"
           else
             echo "Deployment manifest not found at $MANIFEST_PATH"
@@ -71,8 +71,8 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          if ! git diff --quiet ./deployment.yaml; then
-            git add k8s/deployment.yaml
+          if ! git diff --quiet ./k8s/deployment.yaml; then
+            git add ./k8s/deployment.yaml
             git commit -m "Update image tag to ${{ github.sha }}"
             git push
           else
