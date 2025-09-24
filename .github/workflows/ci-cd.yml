@@ -61,12 +61,17 @@ jobs:
         run: |
           sed -i "s|image: $REGISTRY/$REPOSITORY:.*|image: $REGISTRY/$REPOSITORY:${{ github.sha }}|g" ./deployment.yaml
 
-      - name: Commit and push updated manifest
+      - name: Commit and push updated manifest if changed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add ./deployment.yaml
-          git commit -m "Update image tag to ${{ github.sha }}"
-          git push
+          # Only commit if there are changes
+          if ! git diff --quiet ./deployment.yaml; then
+            git add ./deployment.yaml
+            git commit -m "Update image tag to ${{ github.sha }}"
+            git push
+          else
+            echo "No changes to commit"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
