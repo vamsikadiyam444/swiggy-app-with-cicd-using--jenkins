@@ -9,5 +9,5 @@ spec:
     app: swiggy-app  # must match Deployment labels
   ports:
     - port: 80        # internal cluster port
-      targetPort: 80  # container port
+      targetPort: 1234 # container port
       nodePort: 30001 # port on the Minikube node
