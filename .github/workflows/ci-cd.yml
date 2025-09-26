@@ -67,10 +67,10 @@ jobs:
             exit 1
           fi
 
-      # 🔟 Commit & push updated deployment
+      # 🔟 Commit & push updated deployment using PAT
       - name: Commit and push deployment.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}   # Use your personal access token
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
@@ -78,7 +78,7 @@ jobs:
           if ! git diff --quiet ./k8s/deployment.yaml; then
             git add ./k8s/deployment.yaml
             git commit -m "Update deployment image tag to $IMAGE_TAG"
-            git push origin main
+            git push https://x-access-token:${PAT_TOKEN}@github.com/vamsikadiyam444/swiggy-app-with-cicd-using--jenkins.git main
           else
             echo "No changes to commit"
           fi
