@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: swiggy-app
-image: docker.io/vamsikrishna212/swiggy-app:03b6556adcb086a708ea9229563d4acaa7edc62e
+image: docker.io/vamsikrishna212/swiggy-app:d6faf781f518a32a9f9ce7567fa8224761d85a78
           ports:
             - containerPort: 80
