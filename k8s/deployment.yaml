@@ -16,4 +16,4 @@ spec:
         - name: swiggy-app
           image: docker.io/vamsikrishna212/swiggy-app:IMAGE_TAG
           ports:
-            - containerPort: 80
+           - containerPort: 80
