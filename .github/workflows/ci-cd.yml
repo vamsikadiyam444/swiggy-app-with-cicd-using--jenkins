@@ -15,11 +15,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout repository
+      # 1️⃣ Checkout repo using PAT so we can push updates
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT_TOKEN }}  # PAT allows pushing updated deployment.yaml
+          token: ${{ secrets.PAT_TOKEN }}
 
       # 2️⃣ Setup Node.js
       - name: Setup Node.js
@@ -46,7 +46,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      # 7️⃣ Set IMAGE_TAG = commit SHA
+      # 7️⃣ Set IMAGE_TAG to Git commit SHA
       - name: Set IMAGE_TAG
         run: echo "IMAGE_TAG=${GITHUB_SHA}" >> $GITHUB_ENV
 
@@ -70,7 +70,7 @@ jobs:
             exit 1
           fi
 
-      # 🔟 Commit & push updated deployment.yaml back to repo
+      # 🔟 Commit & push updated deployment.yaml back using PAT
       - name: Commit and push deployment.yaml
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
