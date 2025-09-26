@@ -13,6 +13,8 @@ env:
 jobs:
   build-docker:
     runs-on: ubuntu-latest
+    outputs:
+      IMAGE_TAG: ${{ steps.set_image_tag.outputs.IMAGE_TAG }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -37,12 +39,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Set IMAGE_TAG
+        id: set_image_tag
+        run: echo "::set-output name=IMAGE_TAG::${GITHUB_SHA}"
+
       - name: Build and push Docker image
         run: |
-          IMAGE_TAG=${{ github.sha }}
-          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          docker build -t $REGISTRY/$REPOSITORY:${{ steps.set_image_tag.outputs.IMAGE_TAG }} .
+          docker push $REGISTRY/$REPOSITORY:${{ steps.set_image_tag.outputs.IMAGE_TAG }}
 
   update-manifest:
     runs-on: ubuntu-latest
@@ -55,9 +59,10 @@ jobs:
 
       - name: Update Kubernetes manifest image tag
         run: |
+          IMAGE_TAG=${{ needs.build-docker.outputs.IMAGE_TAG }}
           MANIFEST_PATH=./k8s/deployment.yaml
           if [ -f "$MANIFEST_PATH" ]; then
-            sed -i "s|IMAGE_TAG|${{ env.IMAGE_TAG }}|g" "$MANIFEST_PATH"
+            sed -i "s|IMAGE_TAG|$IMAGE_TAG|g" "$MANIFEST_PATH"
           else
             echo "Deployment manifest not found at $MANIFEST_PATH"
             exit 1
@@ -69,8 +74,7 @@ jobs:
           git config --global user.email "actions@github.com"
           if ! git diff --quiet ./k8s/deployment.yaml; then
             git add ./k8s/deployment.yaml
-            git commit -m "Update image tag to ${{ env.IMAGE_TAG }}"
+            git commit -m "Update image tag to $IMAGE_TAG"
             git push
           else
             echo "No changes to commit"
-          fi
