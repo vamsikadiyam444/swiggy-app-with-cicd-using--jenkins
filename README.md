@@ -1,4 +1,4 @@
-Swiggy App — CI/CD + GitOps + Kubernetes (EKS)
+# Swiggy App — CI/CD + GitOps + Kubernetes (EKS)
 
 This project demonstrates how to containerize, deploy, and manage a full-stack Swiggy-like app using modern DevOps practices.
 We implement:
@@ -12,7 +12,7 @@ Amazon EKS (Elastic Kubernetes Service) → production-grade Kubernetes cluster
 AWS Route 53 → custom DNS for app access
 
 
-Prerequisites
+# Prerequisites
 
 AWS account + AWS CLI configured (aws configure)
 
@@ -32,7 +32,7 @@ aws ecr create-repository --repository-name swiggy-app --region us-east-1
 
 ```
 
-Step 2 — Jenkins pipeline (CI) — example Jenkinsfile
+# Step 2 — Jenkins pipeline (CI) — example Jenkinsfile
 
 Place this Jenkinsfile in repo root. It:
 
@@ -42,7 +42,7 @@ Pushes to ECR,
 
 Updates k8s/deployment.yaml image tag and commits it back to repo (Argo CD will pick it up).
 
-Step 3 — Create an EKS cluster 
+# Step 3 — Create an EKS cluster 
 
 Use eksctl:
 ```bash
@@ -59,7 +59,7 @@ kubectl get nodes
 
 ```
 
-Step 4 — Install Argo CD in the cluster
+# Step 4 — Install Argo CD in the cluster
 
 ```bash
 
@@ -75,7 +75,7 @@ kubectl -n argocd port-forward svc/argocd-server 8443:443
 
 ```
 
-Step 8 — DNS (Route 53) & HTTPS
+# Step 5 — DNS (Route 53) & HTTPS
 
 After service is created on EKS, find the ALB hostname:
 
@@ -87,5 +87,6 @@ kubectl get svc swiggy-app -n default
 ```
 
 ![Pipeline Diagram](images/pipeline.png)
+
 
 
