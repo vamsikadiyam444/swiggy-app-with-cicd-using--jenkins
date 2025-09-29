@@ -1,10 +1,16 @@
-Code & Docker image built by Jenkins (CI).
+Swiggy App — CI/CD + GitOps + Kubernetes (EKS)
 
-Jenkins pushes the Docker image to ECR and updates the Kubernetes manifests in this repo.
+This project demonstrates how to containerize, deploy, and manage a full-stack Swiggy-like app using modern DevOps practices.
+We implement:
 
-Argo CD watches this repo and deploys to EKS (GitOps).
+CI/CD with Jenkins → build & push Docker images to Amazon ECR
 
-App is exposed by an ALB (LoadBalancer) in EKS and can be pointed to a custom domain via Route 53.
+GitOps with Argo CD → automatically sync Kubernetes manifests from GitHub
+
+Amazon EKS (Elastic Kubernetes Service) → production-grade Kubernetes cluster
+
+AWS Route 53 → custom DNS for app access
+
 
 Prerequisites
 
@@ -79,3 +85,4 @@ kubectl get svc swiggy-app -n default
 # external hostname looks like: a1b2c3d4e5f6-123456789.us-east-1.elb.amazonaws.com
 
 ```
+
