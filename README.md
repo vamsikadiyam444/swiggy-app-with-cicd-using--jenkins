@@ -86,3 +86,6 @@ kubectl get svc swiggy-app -n default
 
 ```
 
+![Pipeline Diagram](images/pipeline.png)
+
+
